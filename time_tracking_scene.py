@@ -4,9 +4,12 @@ from manimlib.imports import *
 class TimeTrackingScene(Scene):
     def __init__(self, **kwargs):
         self.current_time = 0.0
-        self.f = open("timings.txt", 'w+')
-        self.f.write(str(self.current_time) + "\n")
+        self.timing_file = open("timings.txt", 'w+')
+        self.timing_file.write(str(self.current_time) + "\n")
         super(TimeTrackingScene, self).__init__(**kwargs)
+
+    def __del__(self):
+        self.timing_file.close()
 
     def play(self, *args, **kwargs):
         if len(args) == 0:
@@ -18,7 +21,7 @@ class TimeTrackingScene(Scene):
         )
         max_runtime = max(list(map(lambda anim: anim.get_run_time(), animations)))
         self.set_current_time(self.get_current_time() + max_runtime)
-        self.f.write(str(self.get_current_time()) + "\n")
+        self.timing_file.write(str(self.get_current_time()) + "\n")
         Scene.play(self, *args, **kwargs)
 
     def get_current_time(self):
