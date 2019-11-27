@@ -3,7 +3,7 @@ from manimlib.imports import *
 
 class TitleAndBulletListLayout:
     @staticmethod
-    def createSlide(scene: Scene, title: str, bullet_points: List[str], run_time=1):
+    def createSlide(scene: Scene, title: str, bullet_points: List[str], run_time=0.5):
         current_object = TextMobject(title)
         current_object.scale(1.2)
         current_object.to_edge(UP)
