@@ -1,7 +1,8 @@
 from manimlib.imports import *
 from components import TitleAndBulletListLayout, Utils
+from time_tracking_scene import TimeTrackingScene
 
-class TestScene(Scene):
+class TestScene(TimeTrackingScene):
     def construct(self):
         title = "Why, bruh?"
         points = [
